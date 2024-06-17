@@ -12,32 +12,35 @@ const collectEmployees = function() {
     let salary = prompt("Enter salary")
     if (isNaN(salary)){
       alert('Not a Number!')
-    }
-    else {
       continue;
-    }
-    const continueInput = prompt("Do you want to add another employee? Type Yes or No")
-    if (continueInput.toLowerCase() !== 'yes') {
-      addEmployee = false;
-    
     }
   employees.push({
     firstName: firstName,
     lastName: lastName,
     salary: parseFloat(salary)
   });
+  const continueInput = prompt("Do you want to add another employee? Type Yes to continue or No to finish");
+    if (continueInput.toLowerCase() !== 'yes') {
+    addEmployee = false;
+  }
 }
   return employees;
 }
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
-  // TODO: Calculate and display the average salary
+  let totalSalary = 0;
+  employeesArray.forEach(function(employee) {
+    totalSalary += employee.salary;
+  });
+  const averageSalary = totalSalary / employeesArray.length;
+  console.log(`Average Salary: $${averageSalary}`);
 }
-
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
-  // TODO: Select and display a random employee
+  const randomIndex = Math.floor(Math.random() * employeesArray.length);
+  const randomEmployee = employeesArray[randomIndex];
+  console.log(`Random Employee: ${randomEmployee.firstName} ${randomEmployee.lastName} $${randomEmployee.salary}`);
 }
 
 /*
