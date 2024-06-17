@@ -3,25 +3,25 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
 // Collect employee data
 const collectEmployees = function() {
-  const employees = [];
+  const employees = []; //creates an empty array for employee data to be stored in
   let addEmployee = true;
 
-  while (addEmployee) {
+  while (addEmployee) { //while statement that prompts user for employee data when button is pressed as long as addEmployee = true
     const firstName = prompt("Enter first name")
     const lastName = prompt("Enter last name")
-    let salary = prompt("Enter salary")
+    let salary = prompt("Enter salary") 
     if (isNaN(salary)){
-      alert('Not a Number!')
+      alert('Not a Number!') //checks if salary entered is a number, if not it alerts you that it is not a number, otherwise it continues the function
       continue;
     }
   employees.push({
     firstName: firstName,
     lastName: lastName,
-    salary: parseFloat(salary)
+    salary: parseFloat(salary) //turns the string recieved from the prompt into a number before storing it in the employeeArray
   });
   const continueInput = prompt("Do you want to add another employee? Type Yes to continue or No to finish");
     if (continueInput.toLowerCase() !== 'yes') {
-    addEmployee = false;
+    addEmployee = false; //prompts you if you want to add another employee after you have entered all of an employees data, if you type no it ends the while loop, if you type yes it restarts the loop
   }
 }
   return employees;
@@ -30,11 +30,11 @@ const collectEmployees = function() {
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
   let totalSalary = 0;
-  employeesArray.forEach(function(employee) {
+  employeesArray.forEach(function(employee) { //creates a for each loop for every employee in the array that uses the function to find the average salary
     totalSalary += employee.salary;
   });
-  const averageSalary = totalSalary / employeesArray.length;
-  console.log(`Average Salary: $${averageSalary}`);
+  const averageSalary = totalSalary / employeesArray.length; //finds the average salary by dividing the total of the salarys by the number of employees
+  console.log(`Average Salary: $${averageSalary}`); //console.logs the average
 }
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
